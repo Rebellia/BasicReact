@@ -20,6 +20,7 @@ connection.once("open", function() {
   console.log("Connection with MongoDB was successful");
 });
 
+//Function to get movies from the database
 router.route("/getMovies").get((req, res) => {
   movie.find({}, (err, result) => {
     if (err) {
@@ -31,6 +32,16 @@ router.route("/getMovies").get((req, res) => {
     }
   });
 });
+
+//function to post movies to the database
+/* router.route("/InsertMovies").post((req, res) => {
+  movie.insertOne(myNewMovie, (err, result) => {
+    if (err) throw err;
+    console.log("1 document inserted");
+    res.send(result);
+  });
+}); */
+
 
 app.use("/", router);
 app.listen(PORT, function() {
