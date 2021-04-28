@@ -17,38 +17,40 @@ export default class Movies extends Component {
       });
   }
 
-  /* postMovies = () => {
-    //add movie
-    axios.post('http://localhost:4000/InsertMovie', this.state.m)
-  }
- */
-  getMovies = () => {
+  showMovies = () => {
     this.setState({buttonClicked: true});
   }
+
+  renderMovies = () => {
+    if (this.state.buttonClicked) {    
+      return (
+        this.state.data.map(data => (
+          <>
+            <p>
+              <b>Title</b> : {data.title}
+            </p>
+            <p>
+              <b>Genre</b> : {data.genre}
+            </p>
+            <p>
+              <b>Date Added</b> : {new Date(data.date_added).toLocaleString()}
+            </p>
+            <br />
+          </>
+        ))
+      );
+    }
+  }
+
 
   render = () => {
     return (
       <div className="container-fluid" style={{ marginTop: "30px" }}>
         <div className="row">
           <div className="col-xs-12" style={{ textAlign: "center" }}>
-            <button className="btn btn-primary" style={{ position: "absolute", marginLeft: "50%" }} onClick={this.getMovies}> Display Movies</button>
+            <button className="btn btn-primary" style={{ position: "absolute", marginLeft: "50%" }} onClick={this.showMovies}> Display Movies</button>
             <div className="container-fluid" style={{ position: "absolute", textAlign: "center", marginTop: "50px" }}>
-              {this.state.buttonClicked ? this.state.data.map(data => (
-                      <>
-                        <p>
-                          <b>Title</b> : {data.title}
-                        </p>
-                        <p>
-                          <b>Genre</b> : {data.genre}
-                        </p>
-                        <p>
-                          <b>Date Added</b> : {data.date_added}
-                          {typeof data.date_added}
-                        </p>
-                        <hr />
-                      </>
-                    ))
-                : null}
+              {this.renderMovies()}
             </div>
           </div>
         </div>

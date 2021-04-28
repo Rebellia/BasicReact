@@ -23,11 +23,17 @@ export default class InsertMovie extends Component {
         event.preventDefault();
         //this.setState({date_added: new Date().toLocaleString()});
         this.setState({date_added: new Date().toISOString()});
+        axios.post('http://localhost:4000/insertMovie', {
+            title: this.state.title,
+            genre: this.state.genre,
+            date_added: this.state.date_added
+        }).then((response) => {console.log(response);}, (error) => {console.log("ERROR IN INSERTMOVIE " + error.response.data);});
+
     }
 
     //Ask Andrew why this worked with parentheses and not curly brackets
     renderItems = () => {
-        var myDate = new Date(this.state.date_added); //grab the date in ISO Format
+        const myDate = new Date(this.state.date_added); //grab the date in ISO Format
         return (
             <>
                 <p>New Title: {this.state.title}</p>
@@ -35,16 +41,7 @@ export default class InsertMovie extends Component {
                 <p>{myDate.toLocaleString()}</p>
             </>
         )
-    }
-    
-    /* renderItems = () => (
-        <>
-            <p>New Title: {this.state.title}</p>
-            <p> New Genre: {this.state.genre}</p>
-            <p>{this.state.date_added}</p>
-        </>  
-    ) */
-        
+    }        
     
     render() {
         return(
