@@ -24,7 +24,7 @@ export default class InsertMovie extends Component {
         //this.setState({date_added: new Date().toLocaleString()});
         //this.setState({date_added: new Date().toISOString()});
         const newDate = await this.setState({date_added: new Date()});
-        const nowPost = axios.post('http://localhost:4000/insertMovie', {
+        const nowPost = axios.post('http://localhost:4000/movies/insertMovie', {
             title: this.state.title,
             genre: this.state.genre,
             date_added: this.state.date_added

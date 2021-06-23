@@ -12,7 +12,7 @@ export default class Movies extends Component {
 
   //gets the info from the database 
   componentDidMount = () =>  {
-      axios.get('http://localhost:4000/getMovies').then((res) => {
+      axios.get('http://localhost:4000/movies/getMovies').then((res) => {
           this.setState({data: res.data});
       });
   }

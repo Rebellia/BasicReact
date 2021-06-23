@@ -1,3 +1,4 @@
-Commands to run:
+# Commands to run:
 Backend: node index
+
 Frontend: npm start
