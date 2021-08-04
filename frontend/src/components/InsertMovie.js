@@ -46,7 +46,7 @@ export default class InsertMovie extends Component {
     
     render() {
         return(
-            <form className="col-xs-12" style={{ textAlign: "center" }}>
+            <form className="insertMovie">
                 <label><b>Enter the movie title:   </b></label>
                 <input onChange={this.changeTitle}/>
                 <br/>
