@@ -25,9 +25,20 @@ router.post("/insertMovie", (req, res) => {
 
 //Function to remove movies from the database
 router.delete("/deleteMovie", (req, res) => {
-  console.log("DELETING\n" + req.body);
+  console.log("DELETING " + JSON.stringify(req.body));
+  //Get the name of the movie we want to delete
+  const movieToDelete = new movie(req.body.title);
+  //Find that movie in the database and delete it
+  movie.findOneAndDelete({movieToDelete}, (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(result);
+    }
+  });
+}); 
 
-});
+
 
 
   module.exports = router;

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import OneMovie from "./OneMovie";
 
 export default class Movies extends Component {
   constructor() {
@@ -17,17 +18,6 @@ export default class Movies extends Component {
           this.setState({data: res.data, message: ''});
       });
   }
-
-  showDeleteButton = (event) => {
-    console.log("I'm hovering!");
-    this.setState({isActive: true});
-  }
-
-  hideDeleteButton = (event) => {
-    console.log("I've left!");
-    this.setState({isActive: false});
-  }
-
   showMovies = () => {
     this.setState({buttonClicked: true});
   }
@@ -36,28 +26,7 @@ export default class Movies extends Component {
     if (this.state.buttonClicked) {    
       return (
         this.state.data.map(data => (
-          <>
-            <div className="card">
-              <div onMouseEnter={this.showDeleteButton} onMouseLeave={this.hideDeleteButton}>
-                <p>
-                  <b>Title</b> : {data.title}
-                </p>
-                <p>
-                  <b>Genre</b> : {data.genre}
-                </p>
-                <p>
-                  <b>Date Added</b> : {new Date(data.date_added).toLocaleString()}
-                </p>
-                <br />
-                {/* <div onMouseEnter={this.showDeleteButton} onMouseLeave={this.hideDeleteButton}>
-                  {this.state.isActive ? <button> Delete </button> : null }
-                </div> */}
-                {this.state.isActive ? <button> Delete </button> : null }
-              </div>
-              
-            </div>
-            
-          </>
+          <OneMovie title={data.title} genre={data.genre} date_added={data.date_added}/>
         ))
         
       );
