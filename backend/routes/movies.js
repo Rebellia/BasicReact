@@ -16,20 +16,20 @@ router.route("/getMovies").get((req, res) => {
 
 //function to post movies to the database
 router.post("/insertMovie", (req, res) => {
-    console.log("I HAVE REQUESTED TO ADD\n" + req.body);
+    console.log("I HAVE REQUESTED TO ADD\n" + JSON.stringify(req.body));
     const newMovie = new movie(req.body);
     newMovie.save()
-    .then(item => {res.send("Movie saved to the database");})
+    .then(item => {res.send("Movie sucessfully saved to the database");})
     .catch(err => {res.send("Unable to save Movie to database");})
   });
 
+
+
 //Function to remove movies from the database
 router.delete("/deleteMovie", (req, res) => {
-  console.log("DELETING " + JSON.stringify(req.body));
-  //Get the name of the movie we want to delete
-  const movieToDelete = new movie(req.body.title);
-  //Find that movie in the database and delete it
-  movie.findOneAndDelete({movieToDelete}, (err, result) => {
+  console.log("I HAVE REQUESTED TO DELETE " + JSON.stringify(req.body.title));
+  const deletedMovie = req.body;
+  movie.deleteOne(deletedMovie, (err, result) => {
     if (err) {
       res.send(err);
     } else {

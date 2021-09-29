@@ -7,8 +7,14 @@ import InsertMovie from "./components/InsertMovie";
 function App() {
   return(
     <>
+      <div className="MovieDiv">
+        <p>Add your movie here</p>
+      </div>
       <InsertMovie/>
       <br/>
+      <div className="MovieDiv">
+        <p>Display/Hide your movies here</p>
+      </div>
       <Movies />
     </>
   ) ;

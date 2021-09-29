@@ -9,7 +9,7 @@ const movie = require("./models/movieModel");
 const router = express.Router();
 
 app.use(cors());
-app.use(bodyParser.json()); // for parsing application/json
+app.use(express.json())
 
 //Connect to Mongo DB
 mongoose.connect("mongodb://127.0.0.1:27017/MovieDB", {

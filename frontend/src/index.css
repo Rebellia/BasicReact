@@ -28,12 +28,27 @@ code {
   border: 5px solid black;
   padding: 5px;
   width: 10em;
+  margin: 5px;
 }
 
-/* .card:hover {
+.card:hover {
   background: gray;
-} */
+  color: white;
+}
 
+#banner {
+  background: gray;
+  text-align: center;
+  padding: 5px;
+  color: white;
+}
+
+.MovieDiv {
+  background: blue;
+  text-align: center;
+  padding: 5px;
+  color: white;
+}
 
 .show {
   display: block;

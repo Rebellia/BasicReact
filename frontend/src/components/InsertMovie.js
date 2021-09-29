@@ -24,11 +24,17 @@ export default class InsertMovie extends Component {
         //this.setState({date_added: new Date().toLocaleString()});
         //this.setState({date_added: new Date().toISOString()});
         const newDate = await this.setState({date_added: new Date()});
-        const nowPost = axios.post('http://localhost:4000/movies/insertMovie', {
+
+        const movie = {
             title: this.state.title,
             genre: this.state.genre,
             date_added: this.state.date_added
-        }).then((response) => {console.log(response);}, (error) => {console.log("ERROR IN INSERTMOVIE " + error.response.data);});
+        };
+
+        axios.post('http://localhost:4000/movies/insertMovie', {movie})
+        .then((response) => {
+            console.log(response);},
+            (error) => {console.log("ERROR IN INSERTMOVIE " + error.response.data);});
 
     }
 
@@ -38,7 +44,7 @@ export default class InsertMovie extends Component {
         return (
             <>
                 <p>New Title: {this.state.title}</p>
-                <p> New Genre: {this.state.genre}</p>
+                <p>New Genre: {this.state.genre}</p>
                 <p>{myDate.toLocaleString()}</p>
             </>
         )
@@ -50,7 +56,7 @@ export default class InsertMovie extends Component {
                 <label><b>Enter the movie title:   </b></label>
                 <input onChange={this.changeTitle}/>
                 <br/>
-                <label><b>Enter the genre:   </b></label>
+                <label><b>Enter the movie genre:   </b></label>
                 <input onChange={this.changeGenre}/>
                 <br/>
                 <button className="btn btn-primary" onClick={this.addMovieToDB}>Add Movie</button>
