@@ -1,23 +1,9 @@
 import React, { Component } from "react";
 import "../styles/App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Options from "./options";
 import OneOption from "./OneOption";
 import Movies from "./movies";
 import InsertMovie from "./InsertMovie";
-
-/* function App() {
-  return(
-    <>
-      <OneOption title="search"/>
-      <OneOption title="view"/>
-      <OneOption title="add"/>
-    </>
-  ) ;
-} 
-
-export default App;*/
-
 
 export default class App extends Component {
   constructor() {
@@ -27,7 +13,7 @@ export default class App extends Component {
     }
   }
 
-  changeMode = (newMode) => {
+  setView = (newMode) => {
     this.setState({mainViewMode: newMode});
   }
 
@@ -49,9 +35,9 @@ export default class App extends Component {
 
     return(
       <>
-        <OneOption title="search" modeChanger={this.changeMode}/>
-        <OneOption title="view" modeChanger={this.changeMode}/>
-        <OneOption title="add" modeChanger={this.changeMode}/>
+        <OneOption title="search" setView = {this.setView}/>
+        <OneOption title="view" setView = {this.setView}/>
+        <OneOption title="add" setView = {this.setView}/>
         { view() }
       </>      
     );
