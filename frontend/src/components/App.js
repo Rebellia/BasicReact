@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../styles/App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import OneOption from "./OneOption";
+import Search from "./Search";
 import Movies from "./movies";
 import InsertMovie from "./InsertMovie";
 
@@ -9,7 +10,7 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      mainViewMode: '',
+      mainViewMode: 'search',
     }
   }
 
@@ -21,13 +22,11 @@ export default class App extends Component {
     const view = () => {
       switch (this.state.mainViewMode) {
         case "search":
-          break;
+          return <Search/>;
         case "view":
           return <Movies/>;
-          break;
         case "add":
           return <InsertMovie/>;
-          break;
         default:
           return <h1>Welcome to our app!</h1>
       }
@@ -35,9 +34,17 @@ export default class App extends Component {
 
     return(
       <>
-        <OneOption title="search" setView = {this.setView}/>
-        <OneOption title="view" setView = {this.setView}/>
-        <OneOption title="add" setView = {this.setView}/>
+        <div>
+          <h2>Who's turn is it?</h2>
+          <p>Q'Mariha</p>
+          <h2>Last movie watched: </h2>
+          <p>Spectre (chosen by Andrew)</p>
+        </div>
+        <div className="optionsDiv">
+          <OneOption title="search" setView = {this.setView}/>
+          <OneOption title="view" setView = {this.setView}/>
+          <OneOption title="add" setView = {this.setView}/>
+        </div>
         { view() }
       </>      
     );

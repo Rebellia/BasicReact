@@ -62,7 +62,6 @@ export default class InsertMovie extends Component {
                 <br/>
                 <button className="btn btn-primary" onClick={this.addMovieToDB}>Add Movie</button>
                 {this.renderItems()}
-
             </form>
         );
     }

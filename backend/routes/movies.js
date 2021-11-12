@@ -13,6 +13,23 @@ router.route("/getMovies").get((req, res) => {
     });
   });
 
+  router.route("/findMovie").get((req, res) => {
+    console.log("I WANT TO FIND ", req.query.title);
+
+
+
+    let findMovie = req.query.title;
+
+
+    movie.find({title: findMovie}, (err, result) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(result);
+      }
+    });
+  });
+
 //function to post movies to the database
 router.post("/insertMovie", (req, res) => {
     console.log('I HAVE REQUESTED TO ADD', JSON.stringify(req.body));
@@ -21,8 +38,6 @@ router.post("/insertMovie", (req, res) => {
     .then(item => {res.send("Movie sucessfully saved to the database");})
     .catch(err => {res.send("Unable to save Movie to database" + err);})
   });
-
-
 
 //Function to remove movies from the database
 router.delete("/deleteMovie", (req, res) => {
