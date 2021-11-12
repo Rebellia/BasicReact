@@ -7,8 +7,6 @@ export default class Movies extends Component {
       super();
       this.state = {
           data: [],
-          isActive: false,
-          buttonClicked: false,
       };
   }
 
@@ -18,19 +16,14 @@ export default class Movies extends Component {
           this.setState({data: res.data, message: ''});
       });
   }
-  showMovies = () => {
-    this.setState({buttonClicked: true});
-  }
   
   renderMovies = () => {
-    if (this.state.buttonClicked) {    
-      return (
-        this.state.data.map(data => (
-          <OneMovie title={data.title} genre={data.genre} date_added={data.date_added}/>
-        ))
-        
-      );
-    }
+    return (
+      this.state.data.map(data => (
+        <OneMovie title={data.title} genre={data.genre} date_added={data.date_added}/>
+      ))
+      
+    );
   }
 
 
@@ -39,7 +32,6 @@ export default class Movies extends Component {
       <div className="container-fluid" style={{ marginTop: "30px" }}>
         <div className="row">
           <div className="col-xs-12" style={{ textAlign: "center" }}>
-            <button className="btn btn-primary" style={{ position: "absolute", marginLeft: "50%" }} onClick={this.showMovies}> Display Movies</button>
             <div className="movieMain">
               {this.renderMovies()}
             </div>

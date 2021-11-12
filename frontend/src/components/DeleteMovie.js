@@ -4,11 +4,11 @@ import axios from "axios";
 export default class DeleteMovie extends Component {
     
     removeMovieFromDB = async (event) => {
+        event.preventDefault();
+        
         const movieTitle = {
             title: this.props.title
-        };
-
-        event.preventDefault();
+        };        
         
         axios.delete('http://localhost:4000/movies/deleteMovie',{data: movieTitle})
         .then((response) => {

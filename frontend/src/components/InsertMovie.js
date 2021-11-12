@@ -33,8 +33,9 @@ export default class InsertMovie extends Component {
 
         axios.post('http://localhost:4000/movies/insertMovie', {movie})
         .then((response) => {
-            console.log(response);},
-            (error) => {console.log("ERROR IN INSERTMOVIE " + error.response.data);});
+            console.log("MY RESPONSE: \n" + JSON.stringify(response.data));},
+            (error) => {console.log("ERROR IN INSERTMOVIE " + JSON.stringify(error.response.data));});
+            
 
     }
 

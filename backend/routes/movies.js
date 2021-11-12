@@ -13,14 +13,13 @@ router.route("/getMovies").get((req, res) => {
     });
   });
 
-
 //function to post movies to the database
 router.post("/insertMovie", (req, res) => {
-    console.log("I HAVE REQUESTED TO ADD\n" + JSON.stringify(req.body));
-    const newMovie = new movie(req.body);
+    console.log('I HAVE REQUESTED TO ADD', JSON.stringify(req.body));
+    const newMovie = new movie(req.body.movie);
     newMovie.save()
     .then(item => {res.send("Movie sucessfully saved to the database");})
-    .catch(err => {res.send("Unable to save Movie to database");})
+    .catch(err => {res.send("Unable to save Movie to database" + err);})
   });
 
 

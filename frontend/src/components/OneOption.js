@@ -5,13 +5,11 @@ import InsertMovie from "./InsertMovie";
 export default class OneOption extends Component {
     constructor(props) {
         super(props);
-        this.handleClick.bind(this);
     }
 
+    //Set the viewMode of App
     handleClick = () => {
-        //this.props.changeMode({this.props.title});
-        const title = this.props.title;
-        this.props.setView(title);
+        this.props.setView(this.props.title);
     }
   
     render = () => {
